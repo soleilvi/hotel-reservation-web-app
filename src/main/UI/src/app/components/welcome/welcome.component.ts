@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
 import {WelcomeService} from "../../services/welcome.service";
 
 @Component({
@@ -9,14 +8,14 @@ import {WelcomeService} from "../../services/welcome.service";
 })
 export class WelcomeComponent implements OnInit {
 
-  welcomeObject:any;
+  welcomeMessages:any;
 
   constructor(private service: WelcomeService) { }
 
   ngOnInit(): void {
-    this.welcomeObject = this.service.getWelcomeObject().subscribe(data => this.welcomeObject = data);
-    // let response = this.http.get("http://localhost:8080/welcome");
-    // response.subscribe((data) => this.welcomeObject = data);
+    this.welcomeMessages = this.service.getWelcomeMessages().subscribe(data =>
+      this.welcomeMessages = data
+    );
   }
 
 }

@@ -6,11 +6,9 @@ import { HttpClient} from '@angular/common/http';
 })
 export class WelcomeService {
 
-  private baseURL = 'http://localhost:8080/welcome'
-
   constructor(private http: HttpClient) { }
 
-  getWelcomeObject() {
+  getWelcomeMessages() {
     return this.http.get("http://localhost:8080/welcome");
   }
 }

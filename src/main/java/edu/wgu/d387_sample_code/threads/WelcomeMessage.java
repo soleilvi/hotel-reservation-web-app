@@ -5,11 +5,11 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class DisplayMessage {
+public class WelcomeMessage {
 
     private final String propertyName;
 
-    public DisplayMessage(String propertyName) {
+    public WelcomeMessage(String propertyName) {
         this.propertyName = propertyName;
     }
 
@@ -21,14 +21,6 @@ public class DisplayMessage {
             InputStream inputStream = new ClassPathResource(propertyName).getInputStream();
 
             properties.load(inputStream);
-//            WelcomeThreadInit enInit = new WelcomeThreadInit("English", properties.getProperty("welcome"));
-//            WelcomeThreadInit frInit = new WelcomeThreadInit("French", properties.getProperty("welcome"));
-
-//            Thread enThread = new Thread(enInit);
-//            Thread frThread = new Thread(frInit);
-//
-//            enThread.start();
-//            frThread.start();
 
             return properties.getProperty("welcome");
         }
@@ -36,6 +28,6 @@ public class DisplayMessage {
             e.printStackTrace();
         }
 
-        return null;
+        return "failed";
     }
 }

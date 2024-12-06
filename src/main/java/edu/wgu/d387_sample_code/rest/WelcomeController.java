@@ -1,6 +1,7 @@
-package edu.wgu.d387_sample_code.controller;
+package edu.wgu.d387_sample_code.rest;
 
 import edu.wgu.d387_sample_code.threads.WelcomeThreadHandler;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,23 +15,25 @@ import java.util.concurrent.Future;
 public class WelcomeController {
 
     @RequestMapping("/welcome")
-    // @ResponseBody  // Already implicit
-    // @GetMapping("/welcome")
     public String getWelcomeMessages() {
-        String enWelcome;
-        String frWelcome;
+        JSONArray jsonArray = new JSONArray();
 
         ExecutorService messageExecutor = Executors.newFixedThreadPool(2);
         Future<String> english = messageExecutor.submit(new WelcomeThreadHandler("languages_en_US.properties"));
         Future<String> french = messageExecutor.submit(new WelcomeThreadHandler("languages_fr_CA.properties"));
 
         try {
-            enWelcome = english.get();
-            frWelcome = french.get();
+            String welcomeMessage = "{welcomeMessage: " + english.get() + "}";
+            JSONObject jsonObject = new JSONObject(welcomeMessage);
+            jsonArray.put(jsonObject);
+
+            welcomeMessage = "{welcomeMessage: " + french.get() + "}";
+            jsonObject = new JSONObject(welcomeMessage);
+            jsonArray.put(jsonObject);
         } catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
         }
 
-        return "{\"welcomeMessage\": \"" + enWelcome + "\"}";
+        return jsonArray.toString();
     }
 }
