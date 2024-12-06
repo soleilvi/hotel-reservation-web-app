@@ -8,6 +8,7 @@ import { HttpClientModule} from '@angular/common/http';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {WelcomeService} from "./services/welcome.service";
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { TimeComponent } from './components/time/time.component';
 
 
 
@@ -15,7 +16,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    TimeComponent
   ],
   imports: [
     BrowserModule,
