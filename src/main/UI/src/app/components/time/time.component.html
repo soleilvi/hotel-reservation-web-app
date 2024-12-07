@@ -1,1 +1,19 @@
-<p *ngFor="let time of timeZones"> {{time.code}} {{ time.hour }}:{{ time.minutes }} </p>
+<!--<p *ngFor="let time of timeZones"> {{time.code}} {{ time.hour }}:{{ time.minutes }} </p>-->
+
+<!--<div class='row' id='inline'>-->
+<!--  <label *ngFor="let time of timeZones">- {{time.code}} {{ time.hour }}:{{ time.minutes }}</label>-->
+<!--  <label *ngFor="let time of timeZones">|</label>-->
+<!--</div>-->
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngFor="let time of timeZones">
+      {{time.code}} {{ time.hour }}:{{ time.minutes }}
+    </div>
+  </div>
+</div>
+
+<!--<div class="inline">-->
+<!--  <article>-->
+<!--    <section *ngFor="let time of timeZones">{{time.code}} {{ time.hour }}:{{ time.minutes }} |</section>-->
+<!--  </article>-->
+<!--</div>-->
