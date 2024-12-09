@@ -10,7 +10,6 @@ import java.time.format.DateTimeFormatter;
 import static java.lang.Integer.parseInt;
 
 public class ConvertTimeZone {
-    @Getter
     private String code = "";
     private LocalDateTime dateTimeAtTimeZone;
 
@@ -64,4 +63,6 @@ public class ConvertTimeZone {
 
         return dateTimeAtTimeZone.plusHours(difference).format(formatter);
     }
+
+    public String getCode() { return this.code; }
 }
