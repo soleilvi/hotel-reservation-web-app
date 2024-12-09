@@ -7,6 +7,8 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import static java.lang.Integer.parseInt;
+
 public class ConvertTimeZone {
     @Getter
     private String code = "";
@@ -44,5 +46,22 @@ public class ConvertTimeZone {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("mm");
         return dateTimeAtTimeZone.format(formatter);
+    }
+
+    public String getHourAtSpecificLocalTime(int desiredLocalHour) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        int localHour = parseInt(localDateTime.format(formatter));
+
+        int difference;
+
+        if (localHour <= desiredLocalHour) {
+            difference = desiredLocalHour - localHour;
+        }
+        else {
+            difference = 24 - localHour + desiredLocalHour;
+        }
+
+        return dateTimeAtTimeZone.plusHours(difference).format(formatter);
     }
 }

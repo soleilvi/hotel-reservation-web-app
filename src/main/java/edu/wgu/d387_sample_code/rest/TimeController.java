@@ -12,26 +12,26 @@ import org.springframework.web.bind.annotation.RestController;
 public class TimeController {
 
     @RequestMapping("/time")
-    public String getTimes() {
+    public String getTimesForEvent() {
         JSONArray jsonArray = new JSONArray();
 
         ConvertTimeZone mountainTime = new ConvertTimeZone("MT");
         ConvertTimeZone universalTime = new ConvertTimeZone("UTC");
         ConvertTimeZone easternTime = new ConvertTimeZone("ET");
 
-        String jsonString = "{hour: " + mountainTime.getHourAtTimeZone() +
+        String jsonString = "{hour: " + mountainTime.getHourAtSpecificLocalTime(16) +
                             ", minutes: " + mountainTime.getMinutesAtTimeZone() +
                             ", code: " + mountainTime.getCode() + "}";
         JSONObject jsonObject = new JSONObject(jsonString);
         jsonArray.put(jsonObject);
 
-        jsonString = "{hour: " + easternTime.getHourAtTimeZone() +
+        jsonString = "{hour: " + easternTime.getHourAtSpecificLocalTime(16) +
                      ", minutes: " + easternTime.getMinutesAtTimeZone() +
                      ", code: " + easternTime.getCode() + "}";
         jsonObject = new JSONObject(jsonString);
         jsonArray.put(jsonObject);
 
-        jsonString = "{hour: " + universalTime.getHourAtTimeZone() +
+        jsonString = "{hour: " + universalTime.getHourAtSpecificLocalTime(16) +
                 ", minutes: " + universalTime.getMinutesAtTimeZone() +
                 ", code: " + universalTime.getCode() + "}";
         jsonObject = new JSONObject(jsonString);
