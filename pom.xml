@@ -120,7 +120,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.wgu.advancedjava</mainClass>
+							<mainClass>edu.wgu.d387_sample_code.D387SampleCodeApplication</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
